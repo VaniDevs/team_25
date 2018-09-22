@@ -2,13 +2,21 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import CheckBoxList from "./CheckBoxList";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Family extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      modalIsOpen: true
+      modal_is_open: true,
+      family_name: "",
+      date_of_birth: "",
+      baby_date_of_birth: "",
+      phone_number: "",
+      email: "",
+      items: []
     };
 
     this.openModal = this.openModal.bind(this);
@@ -17,7 +25,7 @@ class Family extends Component {
   }
 
   openModal() {
-    this.setState({ modalIsOpen: true });
+    this.setState({ modal_is_open: true });
   }
 
   afterOpenModal() {
@@ -26,16 +34,31 @@ class Family extends Component {
   }
 
   closeModal() {
-    this.setState({ modalIsOpen: false });
+    const {
+      family_name,
+      date_of_birth,
+      baby_date_of_birth,
+      phone_number,
+      email
+    } = this.state;
+    const family = {
+      family_name,
+      date_of_birth,
+      baby_date_of_birth,
+      phone_number,
+      email
+    };
+
+    this.props.createFamily(family, "jjj");
+    this.setState({ modal_is_open: false });
   }
 
   render() {
     const list = ["item1", "item2"];
-
     return (
       <div>
         <Modal
-          isOpen={this.state.modalIsOpen}
+          isOpen={this.state.modal_is_open}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
@@ -46,16 +69,33 @@ class Family extends Component {
           </h2>
 
           <form>
-            <h10>familyname</h10>
-            <input />
-            <h10>Date of Birth</h10>
-            <input />
-            <h10>Date of Birth of Baby</h10>
-            <input />
-            <h10>Phone Number</h10>
-            <input />
-            <h10>Email</h10>
-            <input />
+            <label>familyname</label>
+            <input
+              value={this.state.family_name}
+              onChange={e => this.setState({ family_name: e.target.value })}
+            />
+            <label>Date of Birth</label>
+            <input
+              value={this.state.date_of_birth}
+              onChange={e => this.setState({ date_of_birth: e.target.value })}
+            />
+            <label>Date of Birth of Baby</label>
+            <input
+              value={this.state.baby_date_of_birth}
+              onChange={e =>
+                this.setState({ baby_date_of_birth: e.target.value })
+              }
+            />
+            <label>Phone Number</label>
+            <input
+              value={this.state.phone_number}
+              onChange={e => this.setState({ phone_number: e.target.value })}
+            />
+            <label>Email</label>
+            <input
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+            />
             <CheckBoxList contents={list} />
           </form>
           <button onClick={this.closeModal}>save</button>
@@ -76,4 +116,4 @@ const customStyles = {
   }
 };
 
-export default Family;
+export default connect(null, actions)(Family);
