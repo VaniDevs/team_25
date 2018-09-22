@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import CheckBoxList from "./CheckBoxList";
 
 class Family extends Component {
-	constructor() {
+  constructor() {
     super();
 
     this.state = {
@@ -16,62 +17,62 @@ class Family extends Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   afterOpenModal() {
     // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+    this.subtitle.style.color = "#f00";
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
-	render() {
+  render() {
+    const list = ["item1", "item2"];
 
+    return (
+      <div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={subtitle => (this.subtitle = subtitle)}>
+            Family Info(Creating family form)
+          </h2>
 
-		return(
-		<div>
-			<Modal
-			isOpen={this.state.modalIsOpen}
-			onAfterOpen={this.afterOpenModal}
-			onRequestClose={this.closeModal}
-			style={customStyles}
-			contentLabel="Example Modal"
-		>
-
-			<h2 ref={subtitle => this.subtitle = subtitle}>Family Info(Creating family form)</h2>
-
-
-			<form>
-				<h10>familyname</h10>
-				<input />
-				<h10>Date of Birth</h10>
-				<input />
-				<h10>Date of Birth of Baby</h10>
-				<input />
-				<h10>Phone Number</h10>
-				<input />
-				<h10>Email</h10>
-				<input />
-
-			</form>
-			<button onClick={this.closeModal}>save</button>
-		</Modal>
-			</div>
-  )
+          <form>
+            <h10>familyname</h10>
+            <input />
+            <h10>Date of Birth</h10>
+            <input />
+            <h10>Date of Birth of Baby</h10>
+            <input />
+            <h10>Phone Number</h10>
+            <input />
+            <h10>Email</h10>
+            <input />
+            <CheckBoxList contents={list} />
+          </form>
+          <button onClick={this.closeModal}>save</button>
+        </Modal>
+      </div>
+    );
+  }
 }
-	}
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 
