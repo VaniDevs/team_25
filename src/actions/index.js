@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_AGENCIES, FETCH_FAMILIES } from './types';
+import { FETCH_AGENCIES, FETCH_FAMILIES, LOGIN } from './types';
 import { data, agencies } from './mockdata';
 
 export const fetchFamilies = (id) => async (dispatch) => {
@@ -20,4 +20,8 @@ export const updateFamily = (data, id) => async (dispatch) => {
 export const fetchAgencies = () => (dispatch) => {
 	const res = agencies;
 	dispatch({ type: FETCH_AGENCIES, payload: res });
+};
+
+export const login = (name) => (dispatch) => {
+	dispatch({ type: LOGIN, payload: name });
 };
