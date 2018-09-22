@@ -5,10 +5,10 @@ import * as actions from '../actions';
 class Agency extends Component {
 	componentDidMount() {
 		this.props.fetchFamilies('id');
-		console.log(this.props.families);
 	}
 
 	render() {
+		console.log(this.props.families);
 		return <div>Agency</div>;
 	}
 }
