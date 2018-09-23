@@ -25,4 +25,4 @@ class ClientUpdateSerializer (serializers.ModelSerializer):
         fields = '__all__'
 
 class EmailSerializer(serializers.Serializer):
-    subject = serializers.CharField(max_length=200)
+    client_id = serializers.IntegerField()
