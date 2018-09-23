@@ -84,6 +84,7 @@ class FamilyItem extends Component {
 		};
 		this.renderList = this.renderList.bind(this);
 		this.toggleItem = this.toggleItem.bind(this);
+		this.updateItem = this.updateItem.bind(this);
 	}
 
 	componentDidMount() {
@@ -123,6 +124,19 @@ class FamilyItem extends Component {
 				</Item>
 			);
 		});
+	}
+
+	updateItem(){
+		let details = [];
+		for(let i = 0; i < this.state.items.length; i++){
+			if(this.state.items[i].chosen){
+				details.push(this.state.items[i].name);
+			}
+		}
+		let f = this.props.family;
+		f.details = details;
+		f.agency = 1;
+		this.props.updateFamily(f,this.props.agency_id);
 	}
 
 	render() {

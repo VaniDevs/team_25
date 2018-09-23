@@ -8,16 +8,16 @@ from django.conf import settings
 class Agency(models.Model):
     name=models.CharField(max_length = 100, blank=False)
     address=models.CharField(max_length = 100, blank=False)
-    phone=models.IntegerField()
+    phone=models.BigIntegerField()
     email=models.CharField(max_length = 100, blank=False)
 
 class Client(models.Model):
     name=models.CharField(max_length = 100, blank=False)
     date_of_birth=models.DateField()
     baby_date_of_birth=models.DateField()
-    phone=models.IntegerField()
+    phone=models.BigIntegerField()
     email=models.CharField(max_length = 100, blank=False)
-    details=ArrayField(models.CharField(max_length=10, blank=False), size=10)
+    details=ArrayField(models.CharField(max_length=100, blank=False), size=30)
     state=models.CharField(max_length = 100, blank=False)
     agency = models.ForeignKey(Agency, on_delete=models.CASCADE)
 

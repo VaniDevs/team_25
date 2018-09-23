@@ -33,8 +33,24 @@ export const createFamily = (family, id) => async dispatch => {
 };
 
 export const updateFamily = (data, id) => async dispatch => {
-  console.log("Updated: ", data);
-  fetchFamilies(id);
+	const options = {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    data: JSON.stringify(data),
+    url: "http://localhost:8080/api/clients/"+data.id+"/"
+  };
+  axios(options)
+    .then(res => {
+      console.log("Succeeded, update family: ", res);
+      axios
+        .get("http://localhost:8080/api/clients_list?agency_id=1")
+        .then(response => {
+          dispatch({ type: FETCH_FAMILIES, payload: response.data });
+        });
+    })
+    .catch(e => {
+      console.log(e);
+    });
 };
 
 export const fetchAgencies = () => dispatch => {
