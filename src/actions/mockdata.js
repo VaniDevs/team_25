@@ -2,8 +2,8 @@ export const data = {
 	families: [
 		{
 			name: 'familyname1',
-			date_of_birth: '1222-22-22',
-			baby_date_of_birth: '1222-22-22',
+			date_of_birth: '1968-03-22',
+			baby_date_of_birth: '2017-05-12',
 			phone_number: '123456778',
 			email: 'aisdsajdksa@dasd.com',
 			status: 'pending',

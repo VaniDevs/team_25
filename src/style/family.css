@@ -1,0 +1,12 @@
+.family_item {
+	display: flex;
+	padding: 15px;
+	background-color: white;
+	border-radius: 15px;
+	margin-top: 15px;
+	box-shadow: 0 2px 20px black;
+}
+
+.family_item-child {
+	margin: auto;
+}
