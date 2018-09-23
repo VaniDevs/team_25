@@ -5,20 +5,12 @@ import { history } from '../routes';
 
 export const fetchFamilies = (id) => async (dispatch) => {
 	//const res = data;
-	const res = axios.get('http://localhost:8080/api/clients_list?id=1', {
-		headers: {
-			'Access-Control-Allow-Origin': '*'
-		},
-		proxy: {
-			host: '127.0.0.1',
-			port: '5432'
-		}
-	});
+	const res = axios.get('http://localhost:8080/api/clients_list?agency_id=1');
 	dispatch({ type: FETCH_FAMILIES, payload: res.body });
 };
 
 export const createFamily = (family, id) => async (dispatch) => {
-	axios.post('http://localhost:8080/api/clients_list?id=1', family).then((res) => {
+	axios.post('http://localhost:8080/api/clients_list?agency_id=1', family).then((res) => {
 		console.log('Succeeded, added family: ', res);
 		fetchFamilies(id);
 	});

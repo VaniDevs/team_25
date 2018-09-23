@@ -43,7 +43,7 @@ const Item = styled(
 	display:inline-block;
 `;
 
-var items_default = [
+let items_default = [
 	{ name: 'Food', chosen: false },
 	{ name: 'Toy', chosen: false },
 	{ name: 'Bassinet', chosen: false },
@@ -113,7 +113,7 @@ class FamilyItem extends Component {
 		return this.state.items.map((item) => {
 			return (
 				<Item
-					key={this.props.family_name + this.props.phone_number}
+					key={item.name + this.props.family_name + this.props.phone_number}
 					pose={item.chosen ? 'chosen' : 'not_chosen'}
 					onClick={() => {
 						this.toggleItem(item.name);
