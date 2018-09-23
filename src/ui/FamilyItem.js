@@ -91,7 +91,7 @@ class FamilyItem extends Component {
 		const details = this.props.family.details;
 		for (let i = 0; i < details.length; i++) {
 			for (let j = 0; j < this.state.items.length; j++) {
-				if (details[i] === items_default[j]) {
+				if (details[i] == items_default[j].name) {
 					items_default[j].chosen = true;
 				}
 			}
@@ -140,6 +140,7 @@ class FamilyItem extends Component {
 	}
 
 	render() {
+		console.log(this.props.family);
 		return (
 			<div>
 				<div className="family_item">
