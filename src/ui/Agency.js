@@ -6,7 +6,13 @@ import CheckBoxList from "./CheckBoxList";
 import FamilyItem from "./FamilyItem";
 import FlipMove from "react-flip-move";
 import {
-  Badge,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
   Button,
   Form,
   FormGroup,
