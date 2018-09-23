@@ -19,8 +19,47 @@ class BGR extends Component {
     });
   };
   render() {
-    console.log(this.props.agencies);
-    return <div />;
+    //console.log(this.props.agencies);
+    const data = this.props.agencies;
+
+    //const listItems = data.map(d => <div> d.name </div>);
+
+    return (
+      <div>
+        //<div>listItems</div>
+        {/* <div>agency name1</div>
+
+        <div>familyname1</div>
+        <div>familyphone</div>
+        <div>familystatus</div>
+        <button>expand</button>
+        <div>item1</div>
+        <div>item2</div>
+
+        <div>familyname2</div>
+        <div>familyphone</div>
+        <div>familystatus</div>
+        <button>expand</button>
+        <div>item1</div>
+        <div>item2</div>
+
+        <div>agency name2</div>
+
+        <div>familyname1</div>
+        <div>familyphone</div>
+        <div>familystatus</div>
+        <button>expand</button>
+        <div>item1</div>
+        <div>item2</div>
+
+        <div>familyname2</div>
+        <div>familyphone</div>
+        <div>familystatus</div>
+        <button>expand</button>
+        <div>item1</div>
+        <div>item2</div> */}
+      </div>
+    );
   }
 }
 function mapStateToProps(state) {
@@ -28,5 +67,12 @@ function mapStateToProps(state) {
     agencies: state.agencies
   };
 }
+
+const getAgencyFamilies = (state, name) => {
+  const agency = state.agencies.find(item => {
+    return item.name === name;
+  });
+  return (agency && agency.families) || [];
+};
 
 export default connect(mapStateToProps, actions)(BGR);
