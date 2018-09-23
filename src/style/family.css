@@ -10,12 +10,3 @@
 .family_item-child {
 	margin: auto;
 }
-
-.arrow-down {
-	width: 0;
-	height: 0;
-	background-color: white;
-	border-style: solid;
-	border-width: 15px 15px 0 15px;
-	border-color: #000000 transparent transparent transparent;
-}
