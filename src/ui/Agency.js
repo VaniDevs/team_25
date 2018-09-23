@@ -54,6 +54,7 @@ class Agency extends Component {
 		this.setState({ modal_is_open: false });
 	}
 	renderList() {
+		console.log('families: ', this.props.families);
 		if (this.props.families) {
 			return this.props.families.families.map((f) => {
 				return (

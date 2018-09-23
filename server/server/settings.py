@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'babygoround',
-        'USER': 'rzhang',
-        'PASSWORD': 'zrq0215zrq',
+        'USER': 'nero',
+        'PASSWORD': 'nero',
         'HOST': '127.0.0.1',
         'PORT':5432,
     }

@@ -26,14 +26,103 @@ const Arrow = styled(
 		transform:scale(1.5);
 	}
 `;
+const Item = styled(
+	posed.div({
+		chosen: { backgroundColor: '#42c2f4', scale: 1.1 },
+		not_chosen: { backgroundColor: '#fff', scale: 1 }
+	})
+)`
+	box-shadow: 0 2px 10px black;
+	padding:15px;
+	margin:5px;
+	cursor: pointer;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+	font-size:16px;
+	border-radius:100px;
+	display:inline-block;
+`;
+
+var items_default = [
+	{ name: 'Food', chosen: false },
+	{ name: 'Toy', chosen: false },
+	{ name: 'Bassinet', chosen: false },
+	{ name: 'Sheet', chosen: false },
+	{ name: 'Diapers', chosen: false },
+	{ name: 'Potties', chosen: false },
+	{ name: 'Seats', chosen: false },
+	{ name: 'Training Pants', chosen: false },
+	{ name: 'Diaper Bags', chosen: false },
+	{ name: 'Pacifers', chosen: false },
+	{ name: 'Wipe Warmers', chosen: false },
+	{ name: 'Wipes', chosen: false },
+	{ name: 'Travel Strolers', chosen: false },
+	{ name: 'Double & Triple Strollers', chosen: false },
+	{ name: 'Standard Strollers', chosen: false },
+	{ name: 'Umbrella Strollers', chosen: false },
+	{ name: 'Car Seats', chosen: false },
+	{ name: 'Car Toys', chosen: false },
+	{ name: 'Carriers', chosen: false },
+	{ name: 'Boy Clothing', chosen: false },
+	{ name: 'Girl Clothing', chosen: false },
+	{ name: 'Baby Skin Care', chosen: false },
+	{ name: 'Baby Oil', chosen: false },
+	{ name: 'Baby Lotion', chosen: false },
+	{ name: 'Shampoos', chosen: false },
+	{ name: 'Towels', chosen: false },
+	{ name: 'Bubble Bath', chosen: false },
+	{ name: 'Maternity Clothing', chosen: false },
+	{ name: 'Beds', chosen: false }
+];
 
 class FamilyItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			open: false,
-			arrow_hover: false
+			items: items_default
 		};
+		this.renderList = this.renderList.bind(this);
+		this.toggleItem = this.toggleItem.bind(this);
+	}
+
+	componentDidMount() {
+		const details = this.props.family.detail;
+		for (let i = 0; i < details.length; i++) {
+			for (let j = 0; j < this.state.items.length; j++) {
+				if (details[i] === items_default[j]) {
+					items_default[j].chosen = true;
+				}
+			}
+		}
+		this.setState({ items: items_default });
+	}
+
+	toggleItem(name) {
+		for (let i = 0; i < items_default.length; i++) {
+			if (items_default[i].name === name) {
+				items_default[i].chosen = !items_default[i].chosen;
+				console.log(name);
+			}
+		}
+		this.setState({ items: items_default });
+		//console.log(this.state.items);
+	}
+
+	renderList() {
+		return this.state.items.map((item) => {
+			return (
+				<Item
+					key={this.props.family_name + this.props.phone_number}
+					pose={item.chosen ? 'chosen' : 'not_chosen'}
+					onClick={() => {
+						this.toggleItem(item.name);
+					}}
+				>
+					{item.name}
+				</Item>
+			);
+		});
 	}
 
 	render() {
@@ -49,7 +138,9 @@ class FamilyItem extends Component {
 					/>
 				</div>
 				<Expand open={this.state.open} duration={200}>
-					<h2>{this.props.family_name}</h2>
+					<div className="family_item-expansion">{this.renderList()}</div>
+
+					<button className="family_item-button">Update</button>
 				</Expand>
 			</div>
 		);
