@@ -2,12 +2,18 @@ export const data = {
 	families: [
 		{
 			name: 'familyname1',
-			address: 'granville',
+			date_of_birth: '1222-22-22',
+			baby_date_of_birth: '1222-22-22',
+			phone_number: '123456778',
+			email: 'aisdsajdksa@dasd.com',
 			detail: [ 'item1', 'item2', 'item3' ]
 		},
 		{
 			name: 'familyname2',
-			address: 'downtown',
+			date_of_birth: '1222-22-22',
+			baby_date_of_birth: '1222-22-22',
+			phone_number: '123456778',
+			email: 'aisdsajdksa@dasd.com',
 			detail: [ 'item1', 'item2', 'item3' ]
 		}
 	]
@@ -20,12 +26,18 @@ export const agencies = {
 			families: [
 				{
 					name: 'familyname1',
-					address: 'granville',
+					date_of_birth: '1222-22-22',
+					baby_date_of_birth: '1222-22-22',
+					phone_number: '123456778',
+					email: 'aisdsajdksa@dasd.com',
 					detail: [ 'item1', 'item2', 'item3' ]
 				},
 				{
 					name: 'familyname2',
-					address: 'downtown',
+					date_of_birth: '1222-22-22',
+					baby_date_of_birth: '1222-22-22',
+					phone_number: '123456778',
+					email: 'aisdsajdksa@dasd.com',
 					detail: [ 'item1', 'item2', 'item3' ]
 				}
 			]
@@ -35,12 +47,18 @@ export const agencies = {
 			families: [
 				{
 					name: 'familyname1',
-					address: 'granville',
+					date_of_birth: '1222-22-22',
+					baby_date_of_birth: '1222-22-22',
+					phone_number: '123456778',
+					email: 'aisdsajdksa@dasd.com',
 					detail: [ 'item1', 'item2', 'item3' ]
 				},
 				{
 					name: 'familyname2',
-					address: 'downtown',
+					date_of_birth: '1222-22-22',
+					baby_date_of_birth: '1222-22-22',
+					phone_number: '123456778',
+					email: 'aisdsajdksa@dasd.com',
 					detail: [ 'item1', 'item2', 'item3' ]
 				}
 			]
