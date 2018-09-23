@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import FlipMove from "react-flip-move";
+import AgencyItem from "./AgencyItem";
 
 class BGR extends Component {
   componentDidMount() {
@@ -13,11 +15,15 @@ class BGR extends Component {
       isChecked: true
     };
   }
-  toggleChange = () => {
-    this.setState({
-      isChecked: !this.state.isChecked
-    });
-  };
+
+  renderList() {
+    if (this.props.agencies) {
+      return this.props.agencies.agencies.map(f => {
+        return <AgencyItem key={f.name} name={f.name} families={f.families} />;
+      });
+    } else return false;
+  }
+
   render() {
     //console.log(this.props.agencies);
     const data = this.props.agencies;
@@ -26,7 +32,7 @@ class BGR extends Component {
 
     return (
       <div>
-        //<div>listItems</div>
+        <FlipMove>{this.renderList() || <div>Loading...</div>}</FlipMove>
         {/* <div>agency name1</div>
 
         <div>familyname1</div>
