@@ -58,6 +58,7 @@ export const fetchAgencies = () => dispatch => {
   dispatch({ type: FETCH_AGENCIES, payload: res });
 };
 
+
 export const login = name => dispatch => {
   history.push("/agency");
   dispatch({ type: LOGIN, payload: name });

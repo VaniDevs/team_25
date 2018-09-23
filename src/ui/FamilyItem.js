@@ -85,6 +85,7 @@ class FamilyItem extends Component {
 		this.renderList = this.renderList.bind(this);
 		this.toggleItem = this.toggleItem.bind(this);
 		this.updateItem = this.updateItem.bind(this);
+		this.approveItem = this.approveItem.bind(this);
 	}
 
 	componentDidMount() {
@@ -139,6 +140,20 @@ class FamilyItem extends Component {
 		this.props.updateFamily(f,this.props.agency_id);
 	}
 
+	approveItem(){
+		let details = [];
+		for(let i = 0; i < this.state.items.length; i++){
+			if(this.state.items[i].chosen){
+				details.push(this.state.items[i].name);
+			}
+		}
+		let f = this.props.family;
+		f.details = details;
+		f.agency = 1;
+		f.state = 'approved';
+		this.props.updateFamily(f,this.props.agency_id);
+	}
+
 	render() {
 		console.log(this.props.family);
 		return (
@@ -147,6 +162,7 @@ class FamilyItem extends Component {
 					<span className="family_item-child">{this.props.name}</span>
 					<span className="family_item-child">{this.props.phone}</span>
 					<span className="family_item-child">{this.props.state}</span>
+					<span className="family_item-child"><button className="family_item-button-approve" onClick={this.approveItem}>Approve</button></span>
 					<Arrow
 						pose={this.state.open ? 'open' : 'close'}
 						onClick={() => this.setState({ open: !this.state.open })}
