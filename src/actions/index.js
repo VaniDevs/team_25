@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FETCH_AGENCIES, FETCH_FAMILIES, LOGIN } from './types';
 import { data, agencies } from './mockdata';
+import { history } from '../routes';
 
 export const fetchFamilies = (id) => async (dispatch) => {
 	const res = data;
@@ -23,5 +24,6 @@ export const fetchAgencies = () => (dispatch) => {
 };
 
 export const login = (name) => (dispatch) => {
+	history.push('/agency');
 	dispatch({ type: LOGIN, payload: name });
 };
