@@ -14,7 +14,7 @@ export const fetchFamilies = (id) => async (dispatch) => {
 			port: '5432'
 		}
 	});
-	dispatch({ type: FETCH_FAMILIES, payload: res });
+	dispatch({ type: FETCH_FAMILIES, payload: res.body });
 };
 
 export const createFamily = (family, id) => async (dispatch) => {
