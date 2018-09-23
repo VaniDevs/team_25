@@ -24,3 +24,5 @@ class ClientUpdateSerializer (serializers.ModelSerializer):
         model = Client
         fields = '__all__'
 
+class EmailSerializer(serializers.Serializer):
+    client_id = serializers.IntegerField()
