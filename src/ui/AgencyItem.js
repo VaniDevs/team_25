@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../style/family.css";
 import Expand from "react-expand-animated";
-import FamilyItem from "./FamilyItem";
+import FamilyDisplayItem from "./FamilyDisplayItem";
 import FlipMove from "react-flip-move";
 
 class AgencyItem extends Component {
@@ -9,12 +9,13 @@ class AgencyItem extends Component {
     if (families) {
       return families.map(f => {
         return (
-          <FamilyItem
+          <FamilyDisplayItem
             key={f.name + f.date_of_birth + f.baby_date_of_birth}
             family_name={f.name}
             phone_number={f.phone_number}
             status={f.status}
             family={f}
+            familyList={f.detail}
           />
         );
       });

@@ -25,45 +25,11 @@ class BGR extends Component {
   }
 
   render() {
-    //console.log(this.props.agencies);
     const data = this.props.agencies;
-
-    //const listItems = data.map(d => <div> d.name </div>);
 
     return (
       <div>
         <FlipMove>{this.renderList() || <div>Loading...</div>}</FlipMove>
-        {/* <div>agency name1</div>
-
-        <div>familyname1</div>
-        <div>familyphone</div>
-        <div>familystatus</div>
-        <button>expand</button>
-        <div>item1</div>
-        <div>item2</div>
-
-        <div>familyname2</div>
-        <div>familyphone</div>
-        <div>familystatus</div>
-        <button>expand</button>
-        <div>item1</div>
-        <div>item2</div>
-
-        <div>agency name2</div>
-
-        <div>familyname1</div>
-        <div>familyphone</div>
-        <div>familystatus</div>
-        <button>expand</button>
-        <div>item1</div>
-        <div>item2</div>
-
-        <div>familyname2</div>
-        <div>familyphone</div>
-        <div>familystatus</div>
-        <button>expand</button>
-        <div>item1</div>
-        <div>item2</div> */}
       </div>
     );
   }
