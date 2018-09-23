@@ -109,3 +109,5 @@ local_settings.py
 
 .env
 db.sqlite3
+
+/server/server/settings.py

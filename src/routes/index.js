@@ -15,7 +15,6 @@ const routes = (
     <Switch>
       <Route path="/" exact component={Login} />
       <Route path="/agency" exact component={Agency} />
-      <Route path="/family" exact component={Family} />
 	  <Route path="/schedule" exact component={Schedule} />
       <Route path="/bgr" exact component={BGR} />
       <Route path="*" component={NotFound} />
