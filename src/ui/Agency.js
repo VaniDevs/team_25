@@ -85,7 +85,8 @@ class Agency extends Component {
   }
   render() {
     //console.log(this.props.families);
-    const list = ["item1", "item2"];
+    const list1 = ["item1", "item2", "item3", "item4", "item5", "item6"];
+
     return (
       <div>
         <FlipMove>{this.renderList() || <div>Loading...</div>}</FlipMove>
@@ -97,57 +98,76 @@ class Agency extends Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>
+          <h3 ref={subtitle => (this.subtitle = subtitle)}>
             Family Info(Creating family form)
-          </h2>
+          </h3>
 
           <Form>
-            <FormGroup>
-              <Label for="exampleEmail">Family Name</Label>
-              <Input
-                value={this.state.family_name}
-                onChange={e => this.setState({ family_name: e.target.value })}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Date of Birth</Label>
-              <Input
-                value={this.state.date_of_birth}
-                onChange={e => this.setState({ date_of_birth: e.target.value })}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Date of Birth for Baby</Label>
-              <Input
-                value={this.state.baby_date_of_birth}
-                onChange={e =>
-                  this.setState({ baby_date_of_birth: e.target.value })
-                }
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Phone Number</Label>
-              <Input
-                value={this.state.phone_number}
-                onChange={e => this.setState({ phone_number: e.target.value })}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="examplePassword">Email</Label>
-              <Input
-                value={this.state.email}
-                onChange={e => this.setState({ email: e.target.value })}
-              />
-            </FormGroup>
-
+            <div style={{ display: "flex" }}>
+              <FormGroup>
+                <Label for="exampleEmail">Family Name</Label>
+                <Input
+                  value={this.state.family_name}
+                  onChange={e => this.setState({ family_name: e.target.value })}
+                />
+              </FormGroup>
+              <div style={{ width: "15%" }} />
+              <FormGroup>
+                <Label for="examplePassword">Date of Birth</Label>
+                <Input
+                  value={this.state.date_of_birth}
+                  onChange={e =>
+                    this.setState({ date_of_birth: e.target.value })
+                  }
+                />
+              </FormGroup>
+            </div>
+            <div style={{ display: "flex" }}>
+              <FormGroup>
+                <Label for="examplePassword">Date of Birth for Baby</Label>
+                <Input
+                  value={this.state.baby_date_of_birth}
+                  onChange={e =>
+                    this.setState({ baby_date_of_birth: e.target.value })
+                  }
+                />
+              </FormGroup>
+              <div style={{ width: "15%" }} />
+              <FormGroup>
+                <Label for="examplePassword">Phone Number</Label>
+                <Input
+                  value={this.state.phone_number}
+                  onChange={e =>
+                    this.setState({ phone_number: e.target.value })
+                  }
+                />
+              </FormGroup>
+            </div>
+            <div style={{ width: "95%" }}>
+              <FormGroup>
+                <Label for="examplePassword">Email</Label>
+                <Input
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })}
+                />
+              </FormGroup>
+            </div>
             {/* <FormGroup check>
               <Label check>
                 <Input type="checkbox" /> Check me out
               </Label>
             </FormGroup> */}
-            <CheckBoxList contents={list} />
-            <Button onClick={this.closeModal}>Submit</Button>
+            <CheckBoxList contents={list1} />
           </Form>
+          <Button
+            style={{
+              position: "relative",
+              left: "40%"
+            }}
+            onClick={this.closeModal}
+          >
+            Submit
+          </Button>
           {/* <form>
             <label>familyname</label>
             <input
