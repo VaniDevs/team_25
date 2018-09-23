@@ -5,14 +5,33 @@ import { history } from '../routes';
 
 export const fetchFamilies = (id) => async (dispatch) => {
 	//const res = data;
-	const res = axios.get('http://localhost:8080/api/clients_list?agency_id=1');
-	dispatch({ type: FETCH_FAMILIES, payload: res.body });
+	const res = await axios.get('http://localhost:8080/api/clients_list?agency_id=1');
+	dispatch({ type: FETCH_FAMILIES, payload: res.data });
 };
 
 export const createFamily = (family, id) => async (dispatch) => {
-	axios.post('http://localhost:8080/api/clients_list?agency_id=1', family).then((res) => {
+	/**
+	 * 
+	 * {"name": "Run", 
+	 * "date_of_birth": "1996-02-15", 
+	 * "baby_date_of_birth": "2018-08-19", 
+	 * "phone": 111, 
+	 * "email": "runqing.z@gmail.com", 
+	 * "details":[],
+	 * "state":"approved", 
+	 * "agency":1}
+	 */
+	const options = {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		data: JSON.stringify(family),
+		url: 'http://localhost:8080/api/clients_list?agency_id=1'
+	};
+	axios(options).then((res) => {
 		console.log('Succeeded, added family: ', res);
 		fetchFamilies(id);
+	}).catch(e=>{
+		console.log(e);
 	});
 };
 

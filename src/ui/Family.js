@@ -94,7 +94,7 @@ class Family extends Component {
 			email
 		};
 
-		this.props.createFamily(family, 'jjj');
+		this.props.createFamily(family, this.props.agency_id);
 		this.setState({
 			modal_is_open: false,
 			family_name: '',
@@ -144,7 +144,13 @@ class Family extends Component {
 						<input value={this.state.email} onChange={(e) => this.setState({ email: e.target.value })} />
 						<CheckBoxList contents={list} />
 					</form>
-					<button onClick={this.closeModal}>save</button>
+					<button
+						onClick={() => {
+							this.closeModal();
+						}}
+					>
+						save
+					</button>
 				</Modal>
 			</div>
 		);
@@ -162,4 +168,10 @@ const customStyles = {
 	}
 };
 
-export default connect(null, actions)(Family);
+function mapStateToProps(state) {
+	return {
+		agency_id: state.id
+	};
+}
+
+export default connect(mapStateToProps, actions)(Family);

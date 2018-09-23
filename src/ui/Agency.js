@@ -43,26 +43,29 @@ class Agency extends Component {
 	closeModal() {
 		const { family_name, date_of_birth, baby_date_of_birth, phone_number, email } = this.state;
 		const family = {
-			family_name,
+			name:family_name,
 			date_of_birth,
 			baby_date_of_birth,
-			phone_number,
-			email
+			phone: phone_number,
+			email,
+			details: [],
+			state: 'pending',
+			agency: 1
 		};
 
-		this.props.createFamily(family, 'jjj');
+		this.props.createFamily(family, this.props.agency_id);
 		this.setState({ modal_is_open: false });
 	}
 	renderList() {
 		console.log('families: ', this.props.families);
 		if (this.props.families) {
-			return this.props.families.families.map((f) => {
+			return this.props.families.map((f) => {
 				return (
 					<FamilyItem
 						key={f.name + f.date_of_birth + f.baby_date_of_birth}
-						family_name={f.name}
-						phone_number={f.phone_number}
-						status={f.status}
+						name={f.name}
+						phone={f.phone}
+						state={f.state}
 						family={f}
 					/>
 				);
@@ -130,7 +133,8 @@ const customStyles = {
 
 function mapStateToProps(state) {
 	return {
-		families: state.families
+		families: state.families,
+		agency_id: state.id
 	};
 }
 

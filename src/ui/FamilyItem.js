@@ -87,7 +87,7 @@ class FamilyItem extends Component {
 	}
 
 	componentDidMount() {
-		const details = this.props.family.detail;
+		const details = this.props.family.details;
 		for (let i = 0; i < details.length; i++) {
 			for (let j = 0; j < this.state.items.length; j++) {
 				if (details[i] === items_default[j]) {
@@ -113,7 +113,7 @@ class FamilyItem extends Component {
 		return this.state.items.map((item) => {
 			return (
 				<Item
-					key={item.name + this.props.family_name + this.props.phone_number}
+					key={item.name + this.props.name + this.props.phone}
 					pose={item.chosen ? 'chosen' : 'not_chosen'}
 					onClick={() => {
 						this.toggleItem(item.name);
@@ -129,9 +129,9 @@ class FamilyItem extends Component {
 		return (
 			<div>
 				<div className="family_item">
-					<span className="family_item-child">{this.props.family_name}</span>
-					<span className="family_item-child">{this.props.phone_number}</span>
-					<span className="family_item-child">{this.props.status}</span>
+					<span className="family_item-child">{this.props.name}</span>
+					<span className="family_item-child">{this.props.phone}</span>
+					<span className="family_item-child">{this.props.state}</span>
 					<Arrow
 						pose={this.state.open ? 'open' : 'close'}
 						onClick={() => this.setState({ open: !this.state.open })}
@@ -140,7 +140,9 @@ class FamilyItem extends Component {
 				<Expand open={this.state.open} duration={200}>
 					<div className="family_item-expansion">{this.renderList()}</div>
 
-					<button className="family_item-button">Update</button>
+					<button onClick={this.updateItem} className="family_item-button">
+						Update
+					</button>
 				</Expand>
 			</div>
 		);
