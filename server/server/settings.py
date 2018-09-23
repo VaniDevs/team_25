@@ -109,8 +109,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'babygoround',
-        'USER': 'nero',
-        'PASSWORD': 'nero',
+        'USER': 'apple',
+        'PASSWORD': 'apple',
         'HOST': '127.0.0.1',
         'PORT': 5432,
     }
