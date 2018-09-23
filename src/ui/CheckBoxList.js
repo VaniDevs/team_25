@@ -15,8 +15,7 @@ class CheckBoxList extends Component {
   };
   render() {
     const { contents } = this.props;
-    //const contents = [{ name: "test1" }, { name: "test2" }];
-    const listItems = contents.map(d => <CheckBox content={d} />);
+    const listItems = contents.map(d => <CheckBox key={d} content={d} />);
 
     return listItems;
   }
