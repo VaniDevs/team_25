@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import CheckBoxList from './CheckBoxList';
+import FamilyItem from './FamilyItem';
+import FlipMove from 'react-flip-move';
 
 class Agency extends Component {
 	componentDidMount() {
@@ -26,6 +28,7 @@ class Agency extends Component {
 		this.openModal = this.openModal.bind(this);
 		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.renderList = this.renderList.bind(this);
 	}
 
 	openModal() {
@@ -51,16 +54,26 @@ class Agency extends Component {
 		this.setState({ modal_is_open: false });
 	}
 	renderList() {
-		return this.props.families.map((f) => {
-			return <h1>f</h1>;
-		});
+		if (this.props.families) {
+			return this.props.families.families.map((f) => {
+				return (
+					<FamilyItem
+						key={f.name + f.date_of_birth + f.baby_date_of_birth}
+						family_name={f.name}
+						phone_number={f.phone_number}
+						status={f.status}
+						family={f}
+					/>
+				);
+			});
+		} else return false;
 	}
 	render() {
 		//console.log(this.props.families);
 		const list = [ 'item1', 'item2' ];
 		return (
 			<div>
-				<div>{this.renderList}</div>
+				<FlipMove>{this.renderList() || <div>Loading...</div>}</FlipMove>
 				<button onClick={this.openModal}> create </button>
 				<Modal
 					isOpen={this.state.modal_is_open}
